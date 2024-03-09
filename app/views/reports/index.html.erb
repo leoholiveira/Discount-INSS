@@ -1,0 +1,7 @@
+<h1>Relatório dos Funcionários</h1>
+
+<% @salary_range.each do |range, quantity| %>
+  <p><strong><%= range %>:</strong> <%= quantity %> funcionários</p>
+<% end %>
+
+<%= column_chart @chart_data, label: 'Funcionários por Faixa Salarial' %>

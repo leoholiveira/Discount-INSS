@@ -1,0 +1,5 @@
+﻿name,email,user_type,password,avatar
+Lucas Anjos,la@gmail.com,client,123456,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTap6CR4Ge_5Wri3xUZxaibeNZsgJDSCwn7bw&usqp=CAU
+Maria Mercedes,mm@gmail.com,admin,123456,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAhQCfrG-Cq5unlRKjui7SuiGjxu2Xw2zhlg&usqp=CAU
+Marcos Palmeira,mp@gmail.com,client,123456,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8CldTqNpzN9ENCGC79zNXg6EfcqEHXTLjQg&usqp=CAU
+Antonio Lime,al@gmail.com,admin,123456,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf_oUtRm8ZAFN0fhpq-vo0pesoedUX-pMvag&usqp=CAU

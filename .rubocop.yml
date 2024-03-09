@@ -1,0 +1,6 @@
+AllCops:
+  Exclude:
+    - 'spec/**/*'
+    - 'bin/bundle'
+    - 'config/initializers/devise.rb'
+    - 'db/**/*'

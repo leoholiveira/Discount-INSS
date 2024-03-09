@@ -1,0 +1,80 @@
+<%= form_for(@proponent, url: (@proponent.id.present? ? proponent_path(@proponent) : '/proponents')) do |f| %>
+  <div data-controller="proponents">
+    <div class="row">
+      <div class="form-outline mb-4 col-sm-6">
+        <%= f.text_field :name, class: 'form-control form-control-lg', required: true %>
+        <%= f.label :name, class: 'form-label' %>
+      </div>
+
+      <div class="form-outline mb-4 col-sm-6">
+        <%= f.text_field :cpf, class: 'form-control form-control-lg', required: true %>
+        <%= f.label :cpf, class: 'form-label' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-outline mb-4 col-sm-6">
+        <%= f.date_field :birthdate, class: 'form-control form-control-lg', required: true %>
+        <%= f.label :birthdate, class: 'form-label' %>
+      </div>
+
+      <div class="form-outline mb-4 col-sm-6">
+        <%= f.number_field :salary, step: :any, class: 'form-control form-control-lg', required: true, data: { "proponents-target": 'formInput', action: 'input->proponents#calculateInss' } %>
+        <%= f.label :salary, class: 'form-label' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-outline mb-4 col-sm-6">
+        <%= f.number_field :discount_inss, step: :any, class: 'form-control form-control-lg', required: true, disabled: true, data: { "proponents-target": 'discountInput' } %>
+        <%= f.label :discount_inss, class: 'form-label' %>
+      </div>
+    </div>
+
+    <h4 class="mb-3">Address</h4>
+
+    <%= f.fields_for :address do |ad| %>
+
+      <div class="row">
+        <div class="form-outline mb-4 col-sm-6">
+          <%= ad.text_field :street, class: 'form-control form-control-lg', required: true, data: { "proponents-target": 'address' } %>
+          <%= ad.label :street, class: 'form-label' %>
+        </div>
+
+        <div class="form-outline mb-4 col-sm-6">
+          <%= ad.text_field :number, class: 'form-control form-control-lg', required: true %>
+          <%= ad.label :number, class: 'form-label' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-outline mb-4 col-sm-6">
+          <%= ad.text_field :neighborhood, class: 'form-control form-control-lg', required: true, data: { "proponents-target": 'neighborhood' } %>
+          <%= ad.label :neighborhood, class: 'form-label' %>
+        </div>
+
+        <div class="form-outline mb-4 col-sm-6">
+          <%= ad.text_field :city, class: 'form-control form-control-lg', required: true, data: { "proponents-target": 'city' } %>
+          <%= ad.label :city, class: 'form-label' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-outline mb-4 col-sm-6">
+          <%= ad.text_field :state, class: 'form-control form-control-lg', required: true, data: { "proponents-target": 'state' } %>
+          <%= ad.label :state, class: 'form-label' %>
+        </div>
+
+        <div class="form-outline mb-4 col-sm-6">
+          <%= ad.number_field :zipcode, limit: 8, class: 'form-control form-control-lg', required: true, data: { "proponents-target": 'zipcode', action: 'input->proponents#searchZipcode' } %>
+          <%= ad.label :zipcode, class: 'form-label' %>
+        </div>
+      </div>
+
+    <% end %>
+
+    <div class="pt-1 mb-4">
+      <%= f.submit nil, class: 'btn btn-dark btn-lg btn-block' %>
+    </div>
+  </div>
+<% end %>

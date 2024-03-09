@@ -1,0 +1,26 @@
+<div data-controller="users" >
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Proponente <%= @proponent.name %></h1>
+  </div>
+
+  <div class="row mb-1">
+    <div class="col-md-12">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0">Dados Pessoais</h3>
+          <div class="mb-1 text-muted"><%= ((Time.zone.now - @proponent.birthdate.to_time) / 1.year.seconds).floor %> Anos</div>
+          <div class="mb-1 text-muted">CPF: <%= @proponent.cpf %></div>
+          <div class="mb-1 text-muted">Salário: <%= number_to_currency(@proponent.salary, unit: "R$", separator: ",", delimiter: ".") %></div>
+          <div class="mb-1 text-muted">Desconto INSS: <%= number_to_currency(@proponent.discount_inss, unit: "R$", separator: ",", delimiter: ".") %></div>
+          
+          <a href="<%= edit_proponent_path(@proponent) %>" class="stretched-link">Edit account</a>
+        </div>
+        <div class="col p-4 d-flex flex-column position-static">
+          <h4>Endereço</h4>
+          <div class="mb-1 text-muted">Logradouro: <%= "#{@proponent.address.street}, #{@proponent.address.number} - #{@proponent.address.city}/#{@proponent.address.state}" %></div>
+          <div class="mb-1 text-muted">CEP: <%= @proponent.address.zipcode %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
