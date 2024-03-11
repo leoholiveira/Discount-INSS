@@ -29,9 +29,9 @@ class ProponentsController < ApplicationController
   def discount_inss
     salary = params[:salary].to_f
 
-    discount = calc_inss(salary)
+    discount = Proponents::CalcInssService.new(salary).call
 
-    render json: { discount: discount.truncate(2) }
+    render json: { discount: }
   end
 
   def update
@@ -50,39 +50,6 @@ class ProponentsController < ApplicationController
   end
 
   private
-
-  def calc_inss(salary)
-    if salary <= 1045.00
-      (salary * 0.075).truncate(2)
-    elsif salary <= 2089.60
-      medium_salary(salary)
-    elsif salary <= 3134.40
-      big_salary(salary)
-    else
-      high_salary(salary)
-    end
-  end
-
-  def medium_salary(salary)
-    discount = (1045.00 * 0.075).truncate(2)
-    discount += ((salary - 1045.00) * 0.09).truncate(2)
-    discount
-  end
-
-  def big_salary(salary)
-    discount = (1045.00 * 0.075).truncate(2)
-    discount += ((2089.60 - 1045.00) * 0.09).truncate(2)
-    discount += ((salary - 2089.60) * 0.12).truncate(2)
-    discount
-  end
-
-  def high_salary(salary)
-    discount = (1045.00 * 0.075).truncate(2)
-    discount += ((2089.60 - 1045.00) * 0.09).truncate(2)
-    discount += ((3134.40 - 2089.60) * 0.12).truncate(2)
-    discount += ((salary - 3134.40) * 0.14).truncate(2)
-    discount
-  end
 
   def set_proponent
     @proponent = Proponent.find(params[:id])

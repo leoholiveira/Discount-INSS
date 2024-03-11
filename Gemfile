@@ -80,10 +80,10 @@ group :test do
   gem 'shoulda-matchers', '~> 5.3'
 end
 
-gem 'devise', '~> 4.9', '>= 4.9.3'
-gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 gem 'bootstrap'
 gem 'chartkick'
+gem 'devise', '~> 4.9', '>= 4.9.3'
+gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 gem 'rubocop-rails'
 gem 'sass-rails'
